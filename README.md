@@ -1,2 +1,4 @@
-# flipper_control
-A remote control for fliperamas where you can control it using Arduino and with tematic buttons
+# Flipper Play
+A remote control for Pinball where you can control it using Arduino.
+
+I'm using Flutter with Dart and Kotlin to make it all happen.
