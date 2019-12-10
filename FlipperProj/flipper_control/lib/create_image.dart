@@ -12,31 +12,28 @@ import 'package:flutter/services.dart';
 class CreateImage extends StatelessWidget {
   final BuildContext context;
   final String path;
-  final ui.Size size;
-  CreateImage (this.context, this.path, this.size);
+  CreateImage (this.context, this.path);
 
   @override
   Widget build(context) {
     // TODO: implement build
-    return DrawImage(context, path, size);
+    return DrawImage(context, path);
   }
 }
 
 class DrawImage extends StatefulWidget {
   final String path;
   final BuildContext context;
-  final ui.Size size;
-  DrawImage(this.context, this.path, this.size);
+  DrawImage(this.context, this.path);
 
   @override
-  _DrawImage createState() => _DrawImage(context, path, size);
+  _DrawImage createState() => _DrawImage(context, path);
 }
 
 class _DrawImage extends State<DrawImage> {
   final String path;
   final BuildContext context;
-  final ui.Size size;
-  _DrawImage(this.context, this.path, this.size);
+  _DrawImage(this.context, this.path);
 
   ui.Image image;
   bool isImageloaded = false;
@@ -63,7 +60,7 @@ class _DrawImage extends State<DrawImage> {
   Widget _buildImage() {
     if (this.isImageloaded) {
       return new CustomPaint(
-        painter: new PaintImage( image: image, size: size ),
+        painter: new PaintImage( image: image ),
       );
     } else {
       return new Center(child: new Text('loading'));
@@ -80,12 +77,17 @@ class PaintImage extends CustomPainter {
   final ui.Image image;
   final ui.Size size;
 
-  PaintImage( { this.image, this.size } );
+  PaintImage({ this.image, this.size });
 
   @override
   void paint(ui.Canvas canvas, size) {
+    var getWid = 0.55;
+
+    var getHei = 0.55;
+
+    canvas.scale(getWid, getHei);
+
     canvas.drawImage(image, new Offset(0.0, 0.0), new Paint());
-    size = this.size;
   }
 
   @override

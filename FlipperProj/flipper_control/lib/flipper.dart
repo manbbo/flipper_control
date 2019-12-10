@@ -40,6 +40,7 @@ class FlipperPage extends StatefulWidget {
 class _FlipperPage extends State<FlipperPage> {
   final int index;
   BuildContext context;
+
   _FlipperPage(this.context, this.index);
 
   @override
@@ -54,7 +55,18 @@ class _FlipperPage extends State<FlipperPage> {
       ),
       body: new Stack(
         children: <Widget>[
-          new CreateImage(this.context, 'assets/images/board$index.jpg', MediaQuery.of(context).size)
+          new Container(
+            child: new Column(
+              children: <Widget>[
+                Expanded(
+                  child: new CreateImage(this.context, 'assets/images/board$index.jpg')
+                ),
+                Expanded(
+                  child: new CreateImage(this.context, 'assets/images/flipper.jpg'),
+                )
+              ],
+            ),
+          ),
         ],
       ),
       backgroundColor: Colors.black,
