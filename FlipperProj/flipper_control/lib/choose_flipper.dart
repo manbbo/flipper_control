@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'create_image.dart';
 import 'flipper.dart';
 
 /// this is the Chooser Flipper
@@ -37,21 +36,19 @@ class _ListPage extends State<ListPage> {
     return GestureDetector(
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Flipper(boardIndex)));
+              MaterialPageRoute(builder: (context) => Flipper(context, boardIndex)));
         },
         child: new Center(
           child: new Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(20),
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new Image.asset('assets/images/board$boardIndex.jpg', scale: 2.2,),
-                  //Image.network('https://bit.ly/2qdYb9P', scale: 2.2),
                   new RichText(text: TextSpan( text: flippers[index], style: TextStyle(fontSize: 20,
                       color: Colors.white)),)
-                ], //
-              ),
-              //https://bit.ly/2qdYb9P
+                ],
+              )
             ),
         )
     );
